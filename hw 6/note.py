@@ -1,0 +1,71 @@
+#показывает заметки
+def showNotes():
+    notes = []
+    if len(notes) == 0:
+        print("Немає нотаток")
+    else:
+        print("\nСписок нотаток:")
+        for note in notes:
+            print(note)
+# добавляет заметки, но они не добавляются
+def addNote():
+    noteToAdd = input("Введіть текст нотатки: ")
+    notes.append(noteToAdd)
+    print("\nНотатка додана успішно!")
+
+# удаляет заметки
+
+def deleteNote():
+    noteToDelete = input("Введіть текст нотатки для видалення: ")
+    if noteToDelete in notes:
+        notes.remove(noteToDelete)
+        print("\nНотатка видалена успішно!")
+    else:
+        print("\nТака нотатка не знайдена!")
+# показывает рание заметки
+def earliestNotes():
+    earliestNotes = sorted(notes, key=len)
+    print("\nНайраніші нотатки:")
+    for note in earliestNotes:
+        print(note)
+# показывает позние заметки
+def latestNotes():
+    latestNotes = sorted(notes, key=len, reverse=True)
+    print("\nНайпізніші нотатки:")
+    for note in latestNotes:
+        print(note)
+# показывает заметки от длыных до коротких
+def longestNotes():
+    longestNotes = sorted(notes, key=len, reverse=True)
+    print("\nНайдовші нотатки:")
+    for note in longestNotes:
+        print(note)
+# показывает от коротких к длинным
+def shortestNotes():
+    shortestNotes = sorted(notes, key=len)
+    print("\nНайкоротші нотатки:")
+    for note in shortestNotes:
+        print(note)
+# это цикл для показа вариаций выбора
+notes = []
+while True:
+    choice = input("\nЩо ви хочете зробити? \n[1] Відобразити нотатки \n[2] Додати нотатку \n[3] Видалити нотатку \n[4] Найраніші нотатки \n[5] Найпізніші нотатки \n[6] Найдовші нотатки \n[7] Найкоротші нотатки \n[q] Вийти \n ")
+    if choice == '1':
+        showNotes()
+    elif choice == '2':
+        addNote()
+    elif choice == '3':
+        deleteNote()
+    elif choice == '4':
+        earliestNotes()
+    elif choice == '5':
+        latestNotes()
+    elif choice == '6':
+        longestNotes()
+    elif choice == '7':
+        shortestNotes()
+    elif choice == 'q':
+        break
+    else:
+        print("Введіть правильний варіант!")
+# незнаю почему но в список не добавлятсю никаких значений
