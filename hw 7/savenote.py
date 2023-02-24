@@ -18,14 +18,15 @@ def addNote():
 # сохраняет файл
 def write_notes():
     with open("note.txt", "w") as f:
-        f.write(str(notes) + "\n")
-        print("\nФайл збережено! ")
-        f.close()
-
+        for note in notes:
+            f.write(note)
+            f.write('\n')
 # должен открывать файл для чтения, но не выходит
 def open_note():
-    with open(input('Введите точное имя файла:'), "r") as f:
-        f.read()
+    with open("note.txt", "r") as f:
+        for line in f.readlines():
+            notes.append(line.strip())
+            print(line)
 
 
 
@@ -64,7 +65,7 @@ def shortestNotes():
 # это цикл для показа вариаций выбора
 notes = []
 while True:
-    choice = input("\nЩо ви хочете зробити? \n[1] Відобразити нотатки \n[2] Додати нотатку \n[3] Видалити нотатку \n[4] Найраніші нотатки \n[5] Найпізніші нотатки \n[6] Найдовші нотатки \n[7] Найкоротші нотатки \n[8] Вiдкрити файл для читання  \n[q] Вийти \n ")
+    choice = input("\nЩо ви хочете зробити? \n[1] Відобразити нотатки \n[2] Додати нотатку \n[3] Видалити нотатку \n[4] Найраніші нотатки \n[5] Найпізніші нотатки \n[6] Найдовші нотатки \n[7] Найкоротші нотатки \n[8] Вiдкрити файл для читання  \n[q] Вийти та зберегти \n ")
     if choice == '1':
         print('|'.join(notes))
     elif choice == '2':
@@ -81,6 +82,7 @@ while True:
         shortestNotes()
     elif choice == '8':
         open_note()
+
     elif choice == 'q':
         write_notes()
         break
