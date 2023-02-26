@@ -1,3 +1,4 @@
+# импортируем все классы для старта
 from animals import Cat
 from animals import Hen
 from animals import Cow
@@ -5,13 +6,13 @@ from animals import Dog
 import random
 from datetime import datetime, timedelta
 
-
+# создаем блок с характеристиками и едой
 if __name__ == '__main__':
     animals = [
-        Cat('Дымок', 3, 'дворовая'),
-        Hen(1),
-        Cow('Бурёнка', 4),
-        Dog('Рок', 1, 'питбуль')
+        Cat('Дымок', 3, 'дворовая',True),
+        Hen(1,True),
+        Cow('Бурёнка', 4, True),
+        Dog('Рок', 1, 'питбуль',True)
     ]
     last_vet_check = datetime.now()
     food_variants = [
@@ -27,28 +28,27 @@ if __name__ == '__main__':
     last_vet_check -= timedelta(days=30)
 
 
-
+# создаем два списка для просмотра что получили, а что потратили
     what_we_get = list()
     what_they_get = list()
 
-
-    for a in animals:
-        a.say(3)
+#создаем циклы для проверок и некоторых функций
+    for animal in animals:
+        animal.say(3)
         for food in random.choices(food_variants, k=3):
-            a.eat(food)
-
+            animal.eat(food)
             what_they_get.append(food)
-        what_we_get.append(a.treat())
+        what_we_get.append(animal.treat())
     for animal in animals:
         print(animal)
     for animal in animals:
         print(f'Проверяем всё ли хорошо с {animal}')
+    for animal in animals:
         if not animal.fed_check:
             print(f'Warning! {animal.name} голоден/голодна!')
         elif animal.fed_check:
             print(f"{animal.name} сыто")
-        #if not dog.is_walked:
-            #print(f'Warning! {dog.name} может нагадить:), поэтому надо срочно выгулять!')
+    for animal in animals:
         if not animal.vet_check:
             print(f'Warning! {animal.name} давно не проверялась/проверялся у ветеринара!')
         elif animal.vet_check:
@@ -57,3 +57,4 @@ if __name__ == '__main__':
 
     print(f'What we lost: {what_they_get}')
     print(f'What we got: {what_we_get}')
+#
