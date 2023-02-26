@@ -1,6 +1,8 @@
+# импортируем дату
 from datetime import datetime
-
+# создаем класс собаки
 class Dog:
+    #создаем эти чтучки для логики поведения и подробного раскрытия класса
     def __init__(self, name:str, age:int, breed: str, gender: str,  preferable_meal: set, last_vet_check: datetime = None):
         self.name = name
         self.age = age
@@ -15,7 +17,7 @@ class Dog:
                 self.vet_check = False
             else:
                 self.vet_check = True
-
+#создаем функции для резюме пса, для сна и для еды и ее проверки
     def __str__(self) -> str:
         return f'{self.gender.capitalize()} породы {self.breed} по имени {self.name}, возраст {self.age} лет, обычно кушает {", ".join(self.preferable_meal)}'
     def sleep(self, hours:int):
@@ -33,6 +35,7 @@ class Dog:
             print(f'{self.name} проходит мимо {food} и ни о чём не жалеет')
             self.bark(3)
             self.fed_check = False
+  # создаем функции для лая и прогулки
     def bark(self, count: int):
         for i in range(count):
             print(f'{self.name} гавкает')

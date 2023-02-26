@@ -1,7 +1,8 @@
+# импортируем класс пса и нужные нам библиотеки
 from dog import Dog
 import random
 from datetime import datetime, timedelta
-
+# создаем данный блок и помещаем в него всю нужную нам информацию о собаках и их еде
 if __name__ == '__main__':
     dog_food = [
         "Мясо",
@@ -24,12 +25,13 @@ if __name__ == '__main__':
         Dog(name="Мегги",gender= "сучка",age= 3, breed= "Бульдог",preferable_meal=set(random.choices(dog_food, k=5)))
     ]
     last_vet_check -= timedelta(days=30)
-
+# создаем базовые функции поведения
     for dog in dogs:
         print(dog)
         dog.sleep(4)
         for food in random.choices(dog_food, k=5):
             dog.eat(food)
+            #создаем циклы проверок на различные недостатки
     for dog in dogs:
         if dog.fed_check:
             dog.walk(1)
